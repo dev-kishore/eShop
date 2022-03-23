@@ -1,0 +1,52 @@
+<!--  Type -->
+<div class="body">
+  <div class="container mt-5">
+    <div class="alert alert-danger mx-auto mb-3" *ngIf="status!=undefined" role="alert">
+      {{status}}
+    </div>
+    <div class="card mb-3 mx-auto d-block h-100 one">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="chosenProduct.image" alt="img" class="card-img p-3 mx-auto d-block two">
+        </div>
+        <div class="col-md-4">
+          <div class="card-body mt-4 p-2">
+            <h3 class="card-title" style="font-weight: bold;">{{chosenProduct.productName}}</h3>
+            <h5 class="card-title mt-3"><span style="font-weight: bold; color: green; ">{{chosenProduct.price |
+                currency:'INR'}}</span> </h5>
+            <!-- Quantity -->
+            <div class="input-group w-50 rounded-pill mt-3">
+              <button type="button" class="input-group-text btn-danger" (click)='delQty()'
+                [disabled]="quantity==1">-</button>
+              <input type="number" class="form-control text-center qtyCount" [value]="quantity" [(ngModel)]="quantity">
+              <button type="button" class="input-group-text btn-danger" (click)="addQty()">+</button>
+            </div>
+            <!-- Product Details -->
+            <p class="card-text mt-4 fw-bold">Details : </p>
+            <h6 class="card-text mt-3">{{chosenProduct.description}}</h6>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-text mt-4 p-3 ms-3">
+            <h6> <i class="fa-solid fa-location-dot"></i> Deliver to <span
+                style="font-weight: bold;">{{userProfile.username}} - {{userProfile.address}}</span></h6>
+            <h6 class="mt-3">Sold by<span style="font-weight: bolder;"> {{chosenProduct.shopName}}</span></h6>
+            <h6 class="mt-3">Fullfilled by<span style="font-weight: bolder;"> eShop</span></h6>
+            <h3 class="mt-3" style="color: green;">In stock.</h3>
+            <!-- quantity -->
+
+            <button class="btn btn-success mt-3" style="width: 190px; border-radius: 0.1cm;" (click)="addToCart()">Add
+              to
+              cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <app-card2 [products]="relatedProducts">
+      <p class="display-6">Similar Products</p>
+    </app-card2>
+  </div>

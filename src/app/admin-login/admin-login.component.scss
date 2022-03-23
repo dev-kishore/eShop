@@ -1,0 +1,16 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+input.ng-touched.ng-invalid{
+  border: solid 2px red;
+}
+
+
+a {
+    cursor: pointer;
+}

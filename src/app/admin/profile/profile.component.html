@@ -1,0 +1,45 @@
+<div class="row mt-5 d-flex justify-content-center">
+  <div class="col-12 col-md-6">
+    <div class="card text-white bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">Shop name: {{adminData.shopName}}</h5>
+        <p class="card-text lead">Email: {{adminData.email}}</p>
+        <p class="card-text lead">Phone: {{adminData.phone}}</p>
+        <button type="button" class="btn btn-primary m-2" (click)="editProfile(template)">Edit Profile</button>
+        <button type="button" class="btn btn-danger m-2" (click)="deleteProfile(adminData.shopName)">Delete
+          Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-white fw-bold text-center bg-dark" style="border-radius: 5px;">
+    <form [formGroup]="editProfileForm" class="mx-auto bg-light text-black p-3 forms mt-5 mb-5 form-group"
+      (ngSubmit)="editProfileForm.invalid">
+      <div class="form-floating mb-3">
+        <input type="email" formControlName="email" class="form-control form-control-lg" id="mail" name="email"
+          placeholder="Email">
+        <label for="email" class="form-label">Email</label>
+        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+          <div *ngIf="mail.errors?.['required']" class="text-danger">
+            *Mail is Requried
+          </div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" formControlName="number" class="form-control form-control-lg" id="num" name="num"
+          placeholder="Number">
+        <label for="num" class="form-label">Number</label>
+        <div *ngIf="number.invalid && (number.dirty || number.touched)">
+          <div *ngIf="number.errors?.['required']" class="text-danger">
+            *Number is Requried
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="saveProfile()"
+        [disabled]="!editProfileForm.valid">Save</button>
+    </form>
+
+  </div>
+</ng-template>

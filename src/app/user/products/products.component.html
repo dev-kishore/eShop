@@ -1,0 +1,31 @@
+<div class="productPage">
+  <app-carousel1></app-carousel1>
+  <div class="container mt-3">
+    <!-- Fashion -->
+    <app-card2 [products]="fashion">
+      <h3 class="categoryHeading"> <span>S</span>hop Latest Trendy Fashion </h3>
+    </app-card2>
+    <!-- groceries -->
+    <app-card2 [products]="grocery">
+      <h3 class="categoryHeading"> <span>F</span>resh Deals Of Grocery</h3>
+    </app-card2>
+    <app-card1></app-card1>
+    <!-- Mobiles -->
+    <app-card2 [products]="mobiles">
+      <h3 class="categoryHeading"><span>L</span>atest Unveiled Mobiles of 2022</h3>
+    </app-card2>
+    <!-- electronics -->
+    <app-card2 [products]="electronics">
+      <h3 class="categoryHeading"><span>E</span>lectronics of Dropped Prices</h3>
+    </app-card2>
+    <!-- footwear -->
+    <app-testimonial></app-testimonial>
+    <app-card2 [products]="footwear">
+      <h3 class="categoryHeading"><span>T</span>op Picks of Latest Models</h3>
+    </app-card2>
+    <!-- books -->
+    <app-card2 [products]="books">
+      <h3 class="categoryHeading"><span>M</span>ost Read Books Of 2021</h3>
+    </app-card2>
+  </div>
+</div>

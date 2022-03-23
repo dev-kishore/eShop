@@ -1,0 +1,38 @@
+<div>
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Footwear'" src="../../../assets/Footwear (1).jpg"
+		class="w-100" alt="Mobile Image">
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Groceries'" src="../../../assets/Grocries (1).jpg"
+		class="w-100" alt="Mobile Image">
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Books'" src="../../../assets/Books.png" class="w-100"
+		alt="Mobile Image">
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Mobile'" src="../../../assets/Mobiles-1 (1).jpg"
+		class="w-100" alt="Mobile Image">
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Fashion'" src="../../../assets/Screenshot (284).png"
+		class="w-100" alt="Mobile Image">
+	<img *ngIf="prodApi.categoryProducts.getValue()[0].category=='Electronics'"
+		src="../../../assets/Electronics-24 (1).jpg" class="w-100" alt="Image">
+</div>
+<div class="container mt-5">
+	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+		<section class="product mt-4 col border"
+			*ngFor="let  product of prodApi.categoryProducts.getValue()| search : prodApi.searchTerm.getValue()"
+			(click)="
+			gotoProductPage(product)">
+			<div class="product__photo">
+				<div class="photo-container">
+					<div class="photo-main">
+						<img src={{product.image}} alt="image">
+					</div>
+				</div>
+			</div>
+			<div class="product__info">
+				<div class="title">
+					<h1>{{product.productName}}</h1>
+				</div>
+				<div class="price">
+					<span>{{product.price | currency:'INR'}}</span>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

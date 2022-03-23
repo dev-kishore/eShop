@@ -1,0 +1,33 @@
+@media (max-width: 1024px) {
+  .content {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .content {
+    height: 100vh;
+  }
+}
+
+.content {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    blue,
+    rgba(143, 211, 244, 0.5)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, blue, rgba(143, 211, 244, 0.5));
+}
+
+a {
+  cursor: pointer;
+}
+input.ng-touched.ng-invalid{
+  border: solid 2px red;
+}

@@ -1,0 +1,62 @@
+<div class="bg-white"></div>
+<p class="display-4 text-center">eShop</p>
+<section class="vh-100">
+  <div class="container py-3 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6 slide-in-left">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid"
+          alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+
+        <p class="fw-bold text-center text-danger" *ngIf="registeerError.error">
+          {{registeerError.errormessage}}
+      </p>
+        <form #loginForm="ngForm" (ngSubmit)="loginProcess(loginForm.value)">
+          <!-- Email input -->
+          <div class="form-floating mb-4">
+            <input type="email" id="email" class="form-control form-control-lg" placeholder="Email address" name="email"
+              ngModel required #email="ngModel" />
+            <label class="form-label" for="email">Email address</label>
+            <small class="text-danger" *ngIf="email.touched && !email.valid">*Email is required</small>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-floating mb-4">
+            <input type="password" id="password" class="form-control form-control-lg" placeholder="Password"
+              name="password" ngModel required #password="ngModel" />
+            <label class="form-label" for="password">Password</label>
+            <small class="text-danger" *ngIf="password.touched && !password.valid">*Password is required</small>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="remember-me" name="remember-me" checked
+                ngModel />
+              <label class="form-check-label" for="remember-me"> Remember me </label>
+            </div>
+            <p>Admin? <a class="text-primary" (click)="adminLogin()">login</a> here!</p>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Sign in</button>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
+
+          <p class="m-0">New to eShop? Sign-up here!</p>
+          <a class="btn btn-primary btn-lg btn-block mb-3" style="background-color: #3b5998" (click)="userSignup()"
+            role="button">
+            Sign Up
+          </a>
+          <p class="m-0">Want to sell in eShop? Open your shop here!</p>
+          <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" (click)="adminSignup()"
+            role="button">Open Shop</a>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

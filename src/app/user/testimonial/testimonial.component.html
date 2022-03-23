@@ -1,0 +1,23 @@
+<!-- Carousel -->
+
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+  <div class="carousel-inner ">
+    <div class="carousel-item active">
+      <app-celebrity [profile]="profile[0]"></app-celebrity>
+    </div>
+    <div class="carousel-item">
+      <app-celebrity [profile]="profile[1]"></app-celebrity>
+    </div>
+    <div class="carousel-item">
+      <app-celebrity [profile]="profile[2]"></app-celebrity>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
+    data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon text-dark"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
+    data-mdb-slide="next">
+    <span class="carousel-control-next-icon text-dark"></span>
+  </button>
+</div>

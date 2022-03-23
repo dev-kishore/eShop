@@ -1,0 +1,22 @@
+<div class="mt-5">
+    <ng-content></ng-content>
+    <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="true" [noWrap]="true" [interval]="2000"
+        [startFromIndex]="0" [showIndicators]="false">
+        <slide *ngFor="let item of products">
+            <section>
+                <div class="card mt-3 h-100 border" (click)="productPage(item)">
+                    <div class="product-image">
+                        <div class="image">
+                            <img class="img-fluid w-100" [src]='item.image'>
+                        </div>
+                        <a class="add-to-cart">Show More</a>
+                    </div>
+                    <div class="card-body">
+                        <h5>{{item.productName}}</h5>
+                        <p> {{item.price | currency:'INR'}}</p>
+                    </div>
+                </div>
+            </section>
+        </slide>
+    </carousel>
+</div>

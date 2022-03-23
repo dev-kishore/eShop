@@ -1,0 +1,63 @@
+.card{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+.card .product-image{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+.card .product-image .image{display: block; }
+
+.card .add-to-cart{
+    background: #A5BA8D;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    padding: 10px 26px;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    transition: all 0.3s ease 0s;
+}
+.card:hover .add-to-cart{ bottom: 0; }
+.card .card-body{
+    background: #fff;}
+.card .title{
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0 0 7px;
+}
+.card .title a{
+    color: #777;
+    transition: all 0.3s ease 0s;
+}
+.card .title a:hover{ color: #a5ba8d; }
+.card .price{
+    color: #0d0d0d;
+    font-size: 14px;
+    font-weight: 600;
+}
+.card .price span{
+    color: #888;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+@media screen and (max-width: 990px){
+    .card{ margin-bottom: 30px; }
+}
+section{
+    max-width: 23rem;
+}
+.image img{
+    height: 300px;
+}
+
+.card-body h5{
+    font-weight: bold;
+}
+

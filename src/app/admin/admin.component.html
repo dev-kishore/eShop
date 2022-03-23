@@ -1,0 +1,114 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0">
+        eShop
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item me-4">
+          <button class="btn btn-info" (click)="addData(addProductModal)">Add Product</button>
+        </li>
+        <li class="nav-item me-4">
+          <a class="nav-link text-white" routerLink="product">Dashboard<i
+              class="fa-solid fa-gauge-simple-high ms-2"></i></a>
+        </li>
+        <li class="nav-item me-4">
+          <a class="nav-link text-white" routerLink="orders">Orders<i class="fas fa-bell ms-2"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">{{ numberOfOrders }}</span></a>
+        </li>
+      </ul>
+      <div class="dropdown dropdown-menu-start">
+        <a class="dropdown-toggle d-flex align-items-center hidden-arrow text-white" id="navbarDropdownMenuAvatar"
+          role="button" data-mdb-toggle="dropdown" aria-expanded="false">Admin<i
+            class="fa-regular fa-user text-white ms-2"></i>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
+          <li>
+            <a class="dropdown-item" routerLink="profile">My profile</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="password">Change password</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="logOut()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<ng-template #addProductModal>
+  <div class="modal-body text-white fw-bold text-center bg-light" style="border-radius: 5px;">
+    <form [formGroup]="addProduct" class="mx-auto bg-light text-black p-3 forms mt-5 mb-5 form-group rounded"
+      (ngSubmit)="addProduct.valid">
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="productName" class="form-control form-control-lg" id="product"
+          name="productName" placeholder="Product name" required>
+        <label for="product" class="form-label">Product name</label>
+        <div *ngIf="productname.invalid && (productname.dirty || productname.touched)">
+          <div *ngIf="productname.errors?.['required']" class="text-danger text-start">
+            *Productname Requried
+          </div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" formControlName="price" class="form-control form-control-lg" id="price" name="price"
+          placeholder="Price" required>
+        <label for="price" class="form-label">Price</label>
+        <div *ngIf="Price.invalid && (Price.dirty || Price.touched)">
+          <div *ngIf="Price.errors?.['required']" class="text-danger text-start">
+            *Price Requried
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <input type="file" formControlName="image" id="image" class="form-control form-control-lg" name="image"
+          (input)="onFileSelected(image.files[0])" #image required>
+        <div *ngIf="Image.invalid && (Image.dirty || Image.touched)">
+          <div *ngIf="Image.errors?.['required']" class="text-danger text-start">
+            *Image Requried
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Select category:</label>
+        <select name="category" id="category" formControlName="category" class="form-select" required>
+          <option value="Mobile">Mobiles</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Footwear">Footwear</option>
+        </select>
+        <div *ngIf="Category.invalid && (Category.dirty || Category.touched)">
+          <div *ngIf="Category.errors?.['required']" class="text-danger text-start">
+            *Category Requried
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <textarea name="description" id="description" rows="5" class="w-100" formControlName="description"
+          placeholder="Description" required></textarea>
+        <div *ngIf="Description.invalid && (Description.dirty || Description.touched)">
+          <div *ngIf="Description.errors?.['required']" class="text-danger text-start">
+            *Description Requried
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="formSubmit()">ADD</button>
+    </form>
+  </div>
+</ng-template>

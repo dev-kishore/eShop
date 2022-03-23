@@ -1,0 +1,27 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="userform">
+    
+    <!-- Name input -->
+    <div class="form-floating mb-4">
+        <input type="text" class="form-control" formControlName="username" />
+        <label class="form-label" for="name">Name</label>
+    </div>
+
+    <!-- Number input -->
+    <div class="form-floating mb-4">
+        <input type="number"  class="form-control" formControlName="phone" />
+        <label class="form-label" for="mobile">Mobile</label>
+    </div>
+
+    <!-- Address input -->
+    <div class="form-floating mb-4">
+        <input type="text" class="form-control" formControlName="address" >
+        <label class="form-label" for="address">Address</label>
+    </div>
+
+    <!-- Buttons -->
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success" data-mdb-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">Close</button>
+    </div>
+
+</form>

@@ -1,0 +1,85 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" routerLink="eshop">eShop</a>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas" data-mdb-target="#demo"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="eshop">
+            <span><i class="fas fa-house"></i></span>
+          </a>
+        </li>
+      </ul>
+      <!-- Left links -->
+      <div class="d-flex align-items-center w-100 form-search">
+        <div class="input-group">
+          <button class="btn btn-light dropdown-toggle shadow-0" type="button" data-mdb-toggle="dropdown"
+            aria-expanded="false" style="padding-bottom: 0.4rem;">
+            All
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark fa-ul">
+            <li *ngFor="let category of categoryList">
+              <a class="dropdown-item" (click)="chooseCategory(category)">
+                {{category | titlecase}}
+              </a>
+            </li>
+          </ul>
+          <input type="search" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" />
+          <button class="text-dark btn btn-light" (click)="search()"><i class="fas fa-search ps-3"></i></button>
+        </div>
+      </div>
+      <ul class="navbar-nav ms-3">
+        <li class="nav-item me-3 me-lg-1 active">
+          <a class="nav-link" routerLink="cart">
+            <span><i class="fas fa-shopping-cart"></i></span>
+            <span class="badge rounded-pill badge-notification bg-danger">{{userApi.user.getValue().cart.length}}</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown mt-1">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i id="profile" class="fa-regular fa-user me-2"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" routerLink="user-dashboard">My Profile</a></li>
+            <li><a class="dropdown-item" routerLink="order">Manage Orders</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end w-50" id="demo">
+  <div class="offcanvas-header">
+    <a class="offcanvas-title" routerLink="products">eShop</a>
+    <button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav me-3" data-bs-dismiss="offcanvas">
+      <!-- Home -->
+      <li><a class="dropdown-item" routerLink="products"> <i class="fas fa-house"></i> Home</a></li>
+      <!-- Cart -->
+      <li>
+        <a class="dropdown-item" routerLink="cart">
+          <span> <i class="fas fa-shopping-cart"></i> Cart</span>
+          <span class="badge rounded-pill badge-notification bg-danger">{{userApi.user.getValue().cart.length}}</span>
+        </a>
+      </li>
+      <!-- Profile  -->
+      <li><a class="dropdown-item" routerLink="user-dashboard"> <i class="fa-solid fa-user"></i> Profile</a></li>
+      <li><a class="dropdown-item" routerLink="order"> <i class="fa-solid fa-gift"></i> Orders</a></li>
+      <li><a class="dropdown-item" (click)="logout()"> <i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<p class="display-4 text-center">eShop</p>
+<section class="vh-100">
+  <div class="container py-3 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid"
+          alt="Phone image">
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+
+        <p class="fw-bold text-center text-danger" *ngIf="registeerError.error">
+          {{registeerError.errormessage}}
+      </p>
+        <form #userLoginForm="ngForm" (ngSubmit)="userLoginProcess(userLoginForm.value)">
+          <!-- Email input -->
+          <div class="form-floating mb-4">
+            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email address" ngModel required #email="ngModel"/>
+            <label class="form-label" for="email">Email address</label>
+            <small class="text-danger" *ngIf="email.touched && !email.valid">*Email is required</small>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-floating mb-4">
+            <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" ngModel required #password="ngModel"/>
+            <label class="form-label" for="password">Password</label>
+            <small class="text-danger" *ngIf="password.touched && !password.valid">*Password is required</small>
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" name="remember-me" type="checkbox" value="" id="remember-me" ngModel/>
+              <label class="form-check-label" for="remember-me"> Remember me </label>
+            </div>
+            <p>User? <a class="text-primary" (click)="userLogin()">login</a> here!</p>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!userLoginForm.valid">Sign in</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

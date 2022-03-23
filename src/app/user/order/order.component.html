@@ -1,0 +1,36 @@
+<!-- Horizontal Card -->
+<div *ngIf="orders.length>0">
+  <div class="card mt-5 mb-2 mx-auto" style="max-width: 900px;" *ngFor="let order of orders">
+    <div class="row g-0">
+      <div class="col-md-4 p-3">
+        <img [src]="order.image" alt="product image" class="img-fluid rounded-start h-100 img" />
+      </div>
+      <div class="col-md-4">
+        <div class="card-body media">
+          <h5 class="head">{{order.productName}}</h5>
+          <h5 class="card-title">{{user.address}}</h5>
+          <h5 class="card-title">Order Id : {{order._id}}</h5>
+          <h5 class="card-title">Sold by {{order.shopName}}</h5>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h5 class="mt-2 statushead ">Order Status : <span> {{order.status}} <i class="fa-regular fa-hourglass" *ngIf="order.status == 'Pending'"></i></span></h5>
+          <h5 class="mt-3 status">Mode of Payment : <span>Cash on Delivery</span></h5>
+          <hr>
+          <h5 class="mt-4 status">Price :<span> {{order.price | currency:'INR'}}</span> </h5>
+          <button type="button" class="btn btn-outline-danger mt-5 w-100" *ngIf="order.status == 'Pending'"
+            (click)="cancelOrder(order)" data-mdb-ripple-color="dark">Cancel Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- no orders made -->
+  
+  <div class="container mt-5" *ngIf="orders.length==0">
+    <img class="mx-auto w-25 d-block mt-5" src="../../../assets/undraw_no_data_re_kwbl.svg" alt="Empty Cart">
+    <h4 class="text-center mt-5" style="font-weight: bolder; font-size: 19px;">Sorry! We could not find any orders!
+    </h4>
+  </div>

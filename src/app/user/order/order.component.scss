@@ -1,0 +1,52 @@
+.status{
+    font-size: 14px; 
+    text-align: right;
+}
+
+.statushead{
+    font-size: 17px;
+    text-align: right;
+}
+
+span{
+    font-weight: bold;
+}
+
+.card-title{
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+.head{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+// .card{
+//     border: 2px solid navy;
+// }
+
+
+
+@media screen and (max-width:750px) {
+    .media{
+        text-align: center;
+    }
+
+    .img{
+        width: 50vw;
+        height: 50vw;
+        margin: auto;
+        display: block;
+    }
+
+    .status{ 
+        text-align: center;
+    }
+    
+    .statushead{
+        text-align: center;
+    }
+    
+}
+

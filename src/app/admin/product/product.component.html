@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col g-5" *ngFor="let  v of products; let i=index">
+      <div class="card p-3 bg-dark text-white shadow">
+        <img src={{v.image}} class="mx-auto" alt="Product image" width="180px">
+        <div class="card-body">
+          <h6>Product Name : <span>
+              <p>{{v.productName}}</p>
+            </span></h6>
+          <h6>Shop Name : <span>
+              <p>{{v.shopName}}</p>
+            </span></h6>
+          <h6>Price : <span>
+              <p>{{v.price}}</p>
+            </span></h6>
+          <h6>{{v.category}}</h6>
+          <h6>{{v.description}}</h6>
+        </div>
+        <div class=" d-flex justify-content-evenly p-1">
+          <button class="btn btn-success btn-md " (click)="editData(v._id,addProductModal)">Edit</button>
+          <button class="btn btn-danger btn-md " (click)="deleteData(v._id,i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #addProductModal>
+    <div class="modal-body text-white fw-bold text-center bg-dark" style="border-radius: 5px;">
+      <form [formGroup]="editForm" class="mx-auto bg-light text-black p-3 forms mt-5 mb-5 form-group"
+        (ngSubmit)="editForm.valid">
+        <div class="form-floating mb-3">
+          <input type="text" formControlName="productName" class="form-control form-control-lg" id="product"
+            name="productName" placeholder="Product name">
+          <label for="product" class="form-label">Product name</label>
+          <div *ngIf="productname.invalid && (productname.dirty || productname.touched)">
+            <div *ngIf="productname.errors?.['required']" class="text-danger">
+              *Product Name Requried
+            </div>
+          </div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" formControlName="price" class="form-control form-control-lg" id="price" name="price"
+            placeholder="Price">
+          <label for="price" class="form-label">Price</label>
+          <div *ngIf="price.invalid && (price.dirty || price.touched)">
+            <div *ngIf="price.errors?.['required']" class="text-danger">
+              *Price is Requried
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="saveData()" [disabled]="!editForm.valid">Save</button>
+      </form>
+    </div>
+  </ng-template>
+</div>
